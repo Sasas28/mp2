@@ -1,24 +1,10 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import { renderProductList } from "./src/shop";
+import { checkCartEmpty } from "./src/utils";
+import { handleSearchInput } from "./src/liveSearch";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const cartIcon = document.getElementById('cart-icon');
+const searchInput = document.getElementById('product-search');
 
-setupCounter(document.querySelector('#counter'))
+renderProductList();
+cartIcon.addEventListener('click', checkCartEmpty)
+searchInput.addEventListener('input', handleSearchInput);
