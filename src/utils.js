@@ -1,10 +1,11 @@
-import { cart } from "./cart";
+import { cart } from "./Data";
 import { renderCart } from "./renderCart";
 
 export function countItem() {
     const cartCounter = document.getElementById('cart-counter');
     let countItem = cart.reduce((total, item) => total + item.quantity, 0);
     cartCounter.textContent = countItem;
+    localStorage.setItem("data", JSON.stringify(cart));
   }
 
 export function calculateCartTotal(cart) {
@@ -36,6 +37,7 @@ export function increaseCartItemQuantity(itemId) {
     if (item) {
         item.quantity++;
         item.amount += parseInt(item.price);
+        localStorage.setItem("data", JSON.stringify(cart));
         countItem()
         renderCart(); // Update the cart display
     }
@@ -46,6 +48,7 @@ export function decreaseCartItemQuantity(itemId) {
     if (item && item.quantity > 1) {
         item.quantity--;
         item.amount -= parseInt(item.price);
+        localStorage.setItem("data", JSON.stringify(cart));
         countItem()
         renderCart(); // Update the cart display
     }
@@ -55,6 +58,7 @@ export function removeCartItem(itemId) {
     const itemIndex = cart.findIndex(product => product.id === itemId);
     if (itemIndex !== -1) {
         cart.splice(itemIndex, 1);
+        localStorage.setItem("data", JSON.stringify(cart));
         countItem();
         renderCart(); 
         checkCartEmpty();

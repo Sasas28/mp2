@@ -1,4 +1,4 @@
-import { cart } from "./cart";
+import { cart } from "./Data";
 import { calculateCartTotal, cleanOutput, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem } from "./utils";
 
 

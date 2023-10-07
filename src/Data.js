@@ -1,3 +1,5 @@
+export const cart = JSON.parse(localStorage.getItem("data")) || [];
+
 export const shopItemsData = [
     {
         id: 1,

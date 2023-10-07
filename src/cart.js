@@ -1,8 +1,8 @@
-import { shopItemsData } from "./Data";
+import { shopItemsData, cart } from "./Data";
 import { countItem } from "./utils";
 import { renderCart } from "./renderCart";
 
-export const cart = [];
+
 
 export function updateCart() {
     const quantityInput = document.getElementById('quantity');
@@ -26,7 +26,8 @@ export function updateCart() {
             cart.push(selectedProduct);
         }
     }
-
+    
+    localStorage.setItem("data", JSON.stringify(cart));
     countItem()
     renderCart()
 }
