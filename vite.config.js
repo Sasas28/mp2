@@ -3,6 +3,7 @@ import pages from 'vite-plugin-pages';
 import { resolve } from 'path'; // Import the resolve function
 
 export default defineConfig({
+    base: '/mp2/',
     plugins: [pages()],
     build: {
         rollupOptions: {
