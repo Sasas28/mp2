@@ -48,3 +48,7 @@
     font-family: sans-serif;
     border: 1px solid black;
   }
+
+  .offcanvas-bottom {
+    height: 100vh;
+  }

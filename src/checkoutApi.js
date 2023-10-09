@@ -1,3 +1,5 @@
+export let deliveryTime = "";
+
 export function accessMapApi() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiamFzdGVyMjgiLCJhIjoiY2xpczEzbm9tMTFzMTNlcW9sbXNpenJvcCJ9.jxS_s16zSL_DFQoBUBn-bA';
     const map = new mapboxgl.Map({
@@ -64,9 +66,17 @@ export function accessMapApi() {
     for (const step of steps) {
     tripInstructions += `<li class="list-group-item">${step.maneuver.instruction}</li>`;
     }
-    instructions.innerHTML = `<p class="p-2"><strong>Delivery time: ${Math.floor(
+    instructions.innerHTML = `
+    <p class="p-2"><strong id="delivery-time">Delivery time: ${Math.floor(
     data.duration / 60
-    )} min 🚴 </strong></p><ol class="list-group list-group-flush">${tripInstructions}</ol>`;
+    )} min 🚴 </strong></p>
+    <p class="p-2"><strong>Directions:</strong></p>
+    <ol class="list-group list-group-flush">${tripInstructions}</ol>`;
+    
+    
+        deliveryTime = `${Math.floor(
+        data.duration / 60
+        )}`;
     }
     
     map.on('load', () => {
